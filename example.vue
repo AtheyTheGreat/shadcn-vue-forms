@@ -29,6 +29,14 @@
         required
       />
       
+      <ShadcnSelect2 
+        name="country" 
+        label="Country" 
+        :options="countries" 
+        v-model="form.country" 
+        placeholder="Select a country"
+      />
+      
       <ShadcnTextarea 
         name="bio" 
         label="Bio" 
@@ -51,12 +59,13 @@
 
 <script setup>
 import { ref } from 'vue'
-import { ShadcnForm, ShadcnInput, ShadcnSelect, ShadcnTextarea } from './src/index.js'
+import { ShadcnForm, ShadcnInput, ShadcnSelect, ShadcnSelect2, ShadcnTextarea } from './src/index.js'
 
 const form = ref({
   name: '',
   email: '',
   role: '',
+  country: '',
   bio: ''
 })
 
@@ -64,6 +73,14 @@ const roles = {
   admin: 'Administrator',
   editor: 'Editor',
   user: 'User'
+}
+
+const countries = {
+  'lk': 'Sri Lanka',
+  'us': 'United States',
+  'uk': 'United Kingdom',
+  'ca': 'Canada',
+  'au': 'Australia'
 }
 
 // Example of setting validation errors

@@ -1,5 +1,6 @@
 export { default as Form } from './Form.vue'
 export { default as Input } from './Input.vue'
 export { default as Select } from './Select.vue'
+export { default as Select2 } from './Select2.vue'
 export { default as Textarea } from './Textarea.vue'
 export { default as Label } from './Label.vue'

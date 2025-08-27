@@ -30,18 +30,25 @@ npm install shadcn-vue-forms
       :options="{ admin: 'Administrator', user: 'User' }" 
       v-model="user.role" 
     />
+    <ShadcnSelect2 
+      name="country" 
+      label="Country" 
+      :options="{ 'lk': 'Sri Lanka', 'us': 'United States' }" 
+      v-model="user.country" 
+    />
     <ShadcnTextarea name="bio" label="Bio" v-model="user.bio" />
   </ShadcnForm>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { ShadcnForm, ShadcnInput, ShadcnSelect, ShadcnTextarea } from 'shadcn-vue-forms'
+import { ShadcnForm, ShadcnInput, ShadcnSelect, ShadcnSelect2, ShadcnTextarea } from 'shadcn-vue-forms'
 
 const user = ref({
   name: '',
   email: '',
   role: '',
+  country: '',
   bio: ''
 })
 </script>
@@ -127,6 +134,36 @@ Props:
 - `help`: Help text
 - `disabled`: Whether the select is disabled
 - `isSelect2`: Whether to use Select2 styling (placeholder)
+
+### Select2
+
+An enhanced select component with Select2 features including search, AJAX loading, and more.
+
+```vue
+<ShadcnSelect2 
+  name="country" 
+  label="Country" 
+  :options="{ 'lk': 'Sri Lanka', 'us': 'United States' }" 
+  v-model="form.country"
+  :is-ajax="true"
+  ajax-url="/api/countries"
+/>
+```
+
+Props:
+- All props from Select component
+- `isAjax`: Whether to load options via AJAX
+- `isFirst`: Whether this is the first select in a cascade
+- `hideSearch`: Whether to hide the search box
+- `allowClear`: Whether to allow clearing the selection
+- `tags`: Whether to allow adding new tags
+- `child`: CSS selector of child select in cascade
+- `ajaxChild`: CSS selector of AJAX child select
+- `ajaxUrl`: URL for AJAX requests
+- `selectedUrl`: URL for selected item details
+- `filterField`: Field name to filter AJAX results
+- `fallback`: CSS selector of fallback input
+- `parentModal`: CSS selector of parent modal
 
 ### Textarea
 
