@@ -1,0 +1,38 @@
+{
+  "name": "shadcn-vue-forms",
+  "version": "0.0.1",
+  "description": "Vue form components with shadcn-ui styling for Laravel",
+  "main": "dist/shadcn-vue-forms.cjs.js",
+  "module": "dist/shadcn-vue-forms.es.js",
+  "types": "src/types/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run"
+  },
+  "keywords": [
+    "vue",
+    "shadcn",
+    "forms",
+    "laravel"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "@vue/test-utils": "^2.4.0",
+    "jsdom": "^22.0.0",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}

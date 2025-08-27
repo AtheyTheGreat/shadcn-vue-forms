@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadcn Vue Forms Demo</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <h1>Shadcn Vue Forms Demo</h1>
+    <form-component></form-component>
+  </div>
+
+  <script type="module">
+    import { createApp, ref } from 'vue'
+    
+    // Simple form component for demo
+    const FormComponent = {
+      template: `
+        <div>
+          <h2>Sample Form</h2>
+          <form @submit.prevent="handleSubmit">
+            <div style="margin-bottom: 1rem;">
+              <label for="name" style="display: block; margin-bottom: 0.5rem;">Name:</label>
+              <input 
+                id="name" 
+                v-model="form.name" 
+                type="text" 
+                required
+                style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"
+              />
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+              <label for="email" style="display: block; margin-bottom: 0.5rem;">Email:</label>
+              <input 
+                id="email" 
+                v-model="form.email" 
+                type="email" 
+                required
+                style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"
+              />
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+              <label for="role" style="display: block; margin-bottom: 0.5rem;">Role:</label>
+              <select 
+                id="role" 
+                v-model="form.role"
+                style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"
+              >
+                <option value="">Select a role</option>
+                <option value="admin">Administrator</option>
+                <option value="editor">Editor</option>
+                <option value="user">User</option>
+              </select>
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+              <label for="bio" style="display: block; margin-bottom: 0.5rem;">Bio:</label>
+              <textarea 
+                id="bio" 
+                v-model="form.bio" 
+                rows="4"
+                style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"
+              ></textarea>
+            </div>
+            
+            <button 
+              type="submit"
+              style="background-color: #007bff; color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;"
+            >
+              Submit
+            </button>
+          </form>
+          
+          <div v-if="submitted" style="margin-top: 1rem; padding: 1rem; background-color: #d4edda; border: 1px solid #c3e6cb; border-radius: 4px;">
+            <h3>Form Data:</h3>
+            <pre>{{ formData }}</pre>
+          </div>
+        </div>
+      `,
+      setup() {
+        const form = ref({
+          name: '',
+          email: '',
+          role: '',
+          bio: ''
+        })
+        
+        const submitted = ref(false)
+        const formData = ref('')
+        
+        const handleSubmit = () => {
+          submitted.value = true
+          formData.value = JSON.stringify(form.value, null, 2)
+          console.log('Form submitted:', form.value)
+        }
+        
+        return {
+          form,
+          submitted,
+          formData,
+          handleSubmit
+        }
+      }
+    }
+    
+    createApp({
+      components: {
+        FormComponent
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>
